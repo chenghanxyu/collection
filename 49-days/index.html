@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>觀密碼 拿好禮</title>
+    <meta name="description" content="玩遊戲並回答正確數字，即可獲得免費電影觀賞勸，還有機會抽中好禮！">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="shortcut icon" href="https://smartcinematw.neocities.org/favicon.ico">
+    <meta name="robots" content="noindex">
+    <meta property="og:title" content="觀密碼 拿好禮康 | 行動電影院 Smart Cinema">
+    <meta property="og:description" content="玩遊戲並回答正確數字，即可獲得免費電影觀賞勸，還有機會抽中好禮！">
+    <meta property="og:site_name" content="行動電影院 Smart Cinema">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://smartcinematw.neocities.org/49-days/">
+    <meta property="og:image" content="https://smartcinematw.neocities.org/img/og.jpg">
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
+    <script>
+      AFRAME.registerComponent('handle-events', {
+        init: function () {
+          var el = this.el;  // <a-box>
+          // 遊戲說明
+          el.addEventListener('mouseenter', function () {
+            el.setAttribute('position', '0 0 10000')
+            el.setAttribute('visible', false)
+            bg.setAttribute('src', '#imgbg02')
+            startbtn.setAttribute('visible', true)
+            startbtn.setAttribute('position', '0 -1 -6')
+          });
+          
+          // 開始遊戲
+          startbtn.addEventListener('mouseenter', function () {
+            startbtn.setAttribute('position', '0 0 10000')
+            startbtn.setAttribute('visible', false)
+            bg.setAttribute('src', '#imgbg03')
+            no01.setAttribute('visible', true)
+            no01.setAttribute('position', '-4.98 2 1.11')
+            scary01.setAttribute('position', '-6.58 12.99 -17.16')
+            scary02.setAttribute('position', '-20 -12.18 0')
+            scary03.setAttribute('position', '15 0 0')
+            scary04.setAttribute('position', '0 0 22')
+            scary05.setAttribute('position', '6.76 20 0')
+            scary06.setAttribute('position', '28.91 -16.94 -25.51')
+            scary07.setAttribute('position', '12.55 10.5 -10.07')
+          });
+          
+          // 數字01被找到
+          no01.addEventListener('mouseenter', function () {
+            no02.setAttribute('visible', true)
+            no02.setAttribute('position', '6.2 9.17 -5.76')
+            findit.setAttribute('visible', true)
+            findit.setAttribute('position', '-4.98 2 1.11')
+            findit.setAttribute('rotation','0 93.39 0')
+          });
+          
+          // 數字02被找到
+          no02.addEventListener('mouseenter', function () {
+            no03.setAttribute('visible', true)
+            no03.setAttribute('position', '-8.41 7.81 -16.14')
+            no01.setAttribute('visible', false)
+            no01.setAttribute('position', '0 0 100000')
+            findit.setAttribute('position', '6.2 9.17 -5.76')
+            findit.setAttribute('rotation','6.302535746439055 -56.14986392282068 -2.291831180523293')
+          });
+          
+          // 數字03被找到
+          no03.addEventListener('mouseenter', function () {
+            no04.setAttribute('visible', true)
+            no04.setAttribute('position', '3.15 8.51 14.28')
+            no02.setAttribute('visible', false)
+            no02.setAttribute('position', '0 0 100000')
+            findit.setAttribute('position', '-8.41 7.81 -16.14')
+            findit.setAttribute('rotation','30.939720937064457 38.96113006889598 20.626480624709636')
+          });
+          
+          // 數字04被找到
+          no04.addEventListener('mouseenter', function () {
+            no05.setAttribute('visible', true)
+            no05.setAttribute('position', '5.85 -6.61 0.42')
+            no03.setAttribute('visible', false)
+            no03.setAttribute('position', '0 0 100000')
+            findit.setAttribute('position', '3.15 8.51 14.28')
+            findit.setAttribute('rotation','31.51267873219528 -154.12564689019143 1.1459155902616465')
+          });
+          
+          // 數字05被找到
+          no05.addEventListener('mouseenter', function () {
+            refindbtn.setAttribute('visible', true)
+            refindbtn.setAttribute('position', '1.5 0 -6')
+            no04.setAttribute('visible', false)
+            no04.setAttribute('position', '0 0 100000')
+            findit.setAttribute('position', '5.85 -6.61 0.42')
+            findit.setAttribute('rotation','-53.285074947166564 -79.64113352318442 -2.291831180523293')
+            anserbtn.setAttribute('visible', true)
+            anserbtn.setAttribute('position', '-1.5 0 -6')
+            bg.setAttribute('src', '#imgbg04')
+          });
+          
+          // 重找數字
+          refindbtn.addEventListener('mouseenter', function () {
+            no05.setAttribute('visible', false)
+            no05.setAttribute('position', '0 0 100000')
+            refindbtn.setAttribute('visible', false)
+            refindbtn.setAttribute('position', '0 0 10000')
+            anserbtn.setAttribute('visible', false)
+            anserbtn.setAttribute('position', '0 0 10000')
+            findit.setAttribute('visible', false)
+            findit.setAttribute('position', 'position', '0 0 10000')
+            no01.setAttribute('visible', true)
+            no01.setAttribute('position', '-4.98 2 1.11')
+            bg.setAttribute('src', '#imgbg03')
+          });
+          
+          // 回答問題
+          anserbtn.addEventListener('mouseenter', function () {
+            refindbtn.setAttribute('visible', false)
+            refindbtn.setAttribute('position', '0 0 10000')
+            anserbtn.setAttribute('visible', false)
+            anserbtn.setAttribute('position', '0 0 10000')
+            findit.setAttribute('visible', false)
+            findit.setAttribute('position', 'position', '0 0 10000')
+            no05.setAttribute('visible', false)
+            no05.setAttribute('position', '0 0 100000')
+            bg.setAttribute('src', '#imgbg05')
+            gotoanserbtn.setAttribute('visible', true)
+            gotoanserbtn.setAttribute('position', '0 0 -6')
+          });
+          
+          // 嚇人
+          scary01.addEventListener('mouseenter', function () {
+            scary01.setAttribute('position', '-1 3 -2')
+            scary01.setAttribute('animation', 'property: position; to: 1 -2 2;dur: 800;')
+            scary01.setAttribute('src', '#imgscary01')
+            scary01.setAttribute('opacity', '0.99')
+          });
+          
+          scary02.addEventListener('mouseenter', function () {
+            scary02.setAttribute('position', '-2 -1 0')
+            scary02.setAttribute('animation', 'property: position; to: 2 3.5 0;dur: 800;')
+            scary02.setAttribute('src', '#imgscary02')
+            scary02.setAttribute('opacity', '0.99')
+          });
+          
+          scary03.addEventListener('mouseenter', function () {
+            scary03.setAttribute('position', '2 1 0')
+            scary03.setAttribute('animation', 'property: position; to: -2 1 0;dur: 800;')
+            scary03.setAttribute('src', '#imgscary03')
+            scary03.setAttribute('opacity', '0.99')
+          });
+          
+          scary04.addEventListener('mouseenter', function () {
+            scary04.setAttribute('position', '0 1 2')
+            scary04.setAttribute('animation', 'property: position; to: 0 1 -2;dur: 800;')
+            scary04.setAttribute('src', '#imgscary04')
+            scary04.setAttribute('opacity', '0.99')
+          });
+          
+          scary05.addEventListener('mouseenter', function () {
+            scary05.setAttribute('position', '2 7 0')
+            scary05.setAttribute('animation', 'property: position; to: -2.76 -3 0;dur: 800;')
+            scary05.setAttribute('src', '#imgscary05')
+            scary05.setAttribute('opacity', '0.99')
+          });
+          
+          scary06.addEventListener('mouseenter', function () {
+            scary06.setAttribute('position', '3 -0.6 -3.5')
+            scary06.setAttribute('animation', 'property: position; to: -2 1.6 2.5;dur: 800;')
+            scary06.setAttribute('src', '#imgscary06')
+            scary06.setAttribute('opacity', '0.99')
+          });
+          
+          scary07.addEventListener('mouseenter', function () {
+            scary07.setAttribute('position', '2.2 3 -2.5')
+            scary07.setAttribute('animation', 'property: position; to: -2.2 0 2;dur: 800;')
+            scary07.setAttribute('src', '#imgscary07')
+            scary07.setAttribute('opacity', '0.99')
+          });
+          
+        } 
+      });
+    </script>
+  </head>
+  <body>
+    <a-scene>
+
+      <!--       素材庫          -->
+      <a-assets>
+        <!--         背景         -->
+        <img id="imgbg01" src="https://smartcinematw.neocities.org/49-days/img/bg01.png">
+        <img id="imgbg02" src="https://smartcinematw.neocities.org/49-days/img/bg02.png">
+        <img id="imgbg03" src="https://smartcinematw.neocities.org/49-days/img/bg03.png">
+        <img id="imgbg04" src="https://smartcinematw.neocities.org/49-days/img/bg04.png">
+        <!--         按鈕         -->
+        <img id="imginfobtn" src="https://smartcinematw.neocities.org/49-days/img/infobtn.png">
+        <img id="imgstartbtn" src="https://smartcinematw.neocities.org/49-days/img/startbtn.png">
+        <img id="imganserbtn" src="https://smartcinematw.neocities.org/49-days/img/anserbtn.png">
+        <img id="imgrefindbtn" src="https://smartcinematw.neocities.org/49-days/img/refindbtn.png">
+        <img id="imggotoanserbtn" src="https://smartcinematw.neocities.org/49-days/img/gotoanserbtn.png">
+        <!--       嚇人照片       -->
+        <img id="imgfortest" src="https://smartcinematw.neocities.org/49-days/img/fortest.png">
+        <img id="imgscary00" src="https://smartcinematw.neocities.org/49-days/img/scary00.png">
+        <img id="imgscary01" src="https://smartcinematw.neocities.org/49-days/img/scary01.jpg">
+        <img id="imgscary02" src="https://smartcinematw.neocities.org/49-days/img/scary02.png">
+        <img id="imgscary03" src="https://smartcinematw.neocities.org/49-days/img/scary03.jpg">
+        <img id="imgscary04" src="https://smartcinematw.neocities.org/49-days/img/scary04.jpg">
+        <img id="imgscary05" src="https://smartcinematw.neocities.org/49-days/img/scary05.jpg">
+        <img id="imgscary06" src="https://smartcinematw.neocities.org/49-days/img/scary06.png">
+        <img id="imgscary07" src="https://smartcinematw.neocities.org/49-days/img/scary07.jpg">
+        <!--         數字         -->
+        <img id="imgno1" src="https://smartcinematw.neocities.org/49-days/img/no01.png">
+        <img id="imgno2" src="https://smartcinematw.neocities.org/49-days/img/no02.png">
+        <img id="imgno3" src="https://smartcinematw.neocities.org/49-days/img/no03.png">
+        <img id="imgno4" src="https://smartcinematw.neocities.org/49-days/img/no04.png">
+        <img id="imgno5" src="https://smartcinematw.neocities.org/49-days/img/no05.png">
+        <!--       找到數字      -->
+        <img id="imgfindit" src="https://smartcinematw.neocities.org/49-days/img/findit.png">
+      </a-assets>
+      
+      <!--    背景及文字說明     -->
+      <a-sky material="shader:gif;src:url(https://smartcinematw.neocities.org/49-days/img/background.gif)"></a-sky>
+      <a-sky id="bg" src="#imgbg01" opacity="0.99"></a-sky>
+      
+      <!--        按鈕          -->
+      <a-plane id="infobtn" width="2" height="1" position="0 1 -6" opacity="0.99" rotation="0 0 0" src="#imginfobtn" handle-events></a-plane>
+      <a-plane id="startbtn" width="2" height="1" position="0 0 10000" opacity="0.99" rotation="0 0 0" src="#imgstartbtn" visible="false"></a-plane>
+      <a-plane id="anserbtn" width="2" height="1" position="0 0 10000" opacity="0.99" rotation="0 0 0" src="#imganserbtn" visible="false"></a-plane>
+      <a-plane id="refindbtn" width="2" height="1" position="0 0 10000" opacity="0.99" rotation="0 0 0" src="#imgrefindbtn" visible="false"></a-plane>
+      <a-link id="gotoanserbtn" position="0 0 10000" href="https://m.me/109161283849058?ref=6XFndxT7ylV" target="_blank" visible="false">
+        <a-plane width="2" height="1" opacity="0.99" rotation="0 0 0" src="#imggotoanserbtn"></a-plane>
+      </a-link>
+      
+      <!--       嚇人照片       -->
+      <a-plane id="scary01" src="#imgscary00" opacity="0.1" visible="true" width="3" height="2" position="0 0 10000" rotation="36.09634109324186 18.615776058793873 5.448451336700702"></a-plane>
+      <a-plane id="scary02" src="#imgscary00" opacity="0.1" visible="true" width="3" height="3" position="0 0 10000" rotation="-38.96113006889598 92.81916281119337 -1.7188733853924696"></a-plane>
+      <a-plane id="scary03" src="#imgscary00" opacity="0.1" visible="true" width="2" height="3" position="0 0 10000" rotation="0 -89.95437383553924 0"></a-plane>
+      <a-plane id="scary04" src="#imgscary00" opacity="0.1" visible="true" width="3" height="2" position="0 0 10000" rotation="-4.583662361046586 179.9087476710785 0"></a-plane>
+      <a-plane id="scary05" src="#imgscary00" opacity="0.1" visible="true" width="2" height="3" position="0 0 10000" rotation="50.680003454288446 -89.95437383553924 0"></a-plane>
+      <a-plane id="scary06" src="#imgscary00" opacity="0.1" visible="true" width="3" height="2" position="0 0 10000" rotation="-25.783100780887047 -40.10704565915762 -6.302535746439055"></a-plane>
+      <a-plane id="scary07" src="#imgscary00" opacity="0.1" visible="true" width="2" height="3" position="0 0 10000" rotation="29.220847551671984 -40.680003454288446 0.5729577951308232"></a-plane>
+      
+      <!--         數字         -->
+      <a-plane id="no01" src="#imgno1" opacity="0.99" visible="false" width="1" height="1" position="0 0 100000" animation="" material="src: #imgno1; opacity: 0.99" geometry="primitive: plane; width: 1; height: 1" rotation="0 93.39 0"></a-plane>
+      <a-plane id="no02" src="#imgno2" opacity="0.99" visible="false" width="1" height="1" position="0 0 100000" animation="" material="src: #imgno2; opacity: 0.99" geometry="primitive: plane; width: 1; height: 1" rotation="6.302535746439055 -56.14986392282068 -2.291831180523293"></a-plane>
+      <a-plane id="no03" src="#imgno3" opacity="0.99" visible="false" width="1" height="1" position="0 0 100000" animation="" material="src: #imgno3; opacity: 0.99" geometry="primitive: plane; width: 1; height: 1" rotation="30.939720937064457 38.96113006889598 20.626480624709636"></a-plane>
+      <a-plane id="no04" src="#imgno4" opacity="0.99" visible="false" width="1" height="1" position="0 0 100000" animation="" material="src: #imgno4; opacity: 0.99" geometry="primitive: plane; width: 1; height: 1" rotation="31.51267873219528 -154.12564689019143 1.1459155902616465"></a-plane>
+      <a-plane id="no05" src="#imgno5" opacity="0.99" visible="false" width="1" height="1" position="0 0 100000" animation="" material="src: #imgno5; opacity: 0.99" geometry="primitive: plane; width: 1; height: 1" rotation="-53.285074947166564 -79.64113352318442 -2.291831180523293"></a-plane>
+      
+      <!--       找到數字      -->
+      <a-plane id="findit" src="#imgfindit" opacity="0.99" visible="false" width="1" height="2" position="0 0 100000" animation="" material="src: #imgfindit; opacity: 0.99" geometry="primitive: plane; width: 1; height: 2" rotation="0 93.39 0"></a-plane>
+      
+      <a-camera>
+        <a-cursor id="cursor" color="yellow"></a-cursor>
+      </a-camera>
+    </a-scene>
+    <script src="../NoSleep.min.js"></script>
+    <script>
+      var noSleep = new NoSleep();
+
+      var wakeLockEnabled = false;
+      var toggleEl = document.querySelector("#toggle");
+      toggleEl.addEventListener('click', function() {
+        if (!wakeLockEnabled) {
+          noSleep.enable(); // keep the screen on!
+          wakeLockEnabled = true;
+          toggleEl.value = "Wake Lock is enabled";
+          document.body.style.backgroundColor = "green";
+        } else {
+          noSleep.disable(); // let the screen turn off.
+          wakeLockEnabled = false;
+          toggleEl.value = "Wake Lock is disabled";
+          document.body.style.backgroundColor = "";
+        }
+      }, false);
+    </script>
+  </body>
+</html>
