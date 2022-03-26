@@ -1,0 +1,126 @@
+html, body{
+    margin : 0px;
+    width : 100%;
+    height : 100%;
+   /* overflow: hidden;
+    */
+    background-color: #eafddb;
+    font-family: "Helvetica", "Arial","LiHei Pro","黑體-繁","微軟正黑體","SimHei","Microsoft YaHei";
+}
+.logo{
+    height: 30px;
+    display:block;
+    margin:auto;
+    margin-top: 15px;
+}
+h1{
+    text-align: center;
+    color: #000;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.exp{
+    text-align: center;
+    color: #222;
+    margin-top: 22px;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-bottom: 0px;
+    font-weight: bold;
+}
+.hi-exp{
+    border:dotted 3px #89e68b;
+    color: #222;
+    text-align: center;
+    margin: auto;
+    margin-top: 0px;
+   /*margin-right: 5px;
+   */
+   /*margin-left: 5px;
+   */
+    padding: 8px;
+    max-width: 500px;
+}
+.howto{
+    text-align: center;
+    color: #222;
+    font-size: 0.8em;
+    margin-top: 0px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+#gamePos{
+    position: relative;
+    height: 100vh;
+    max-height: 100vw;
+}
+#music_btn{
+    position:absolute;
+    right:10px;
+}
+#gameCanvas{
+    position: absolute;
+    padding-bottom: 30px;
+    padding-top: 5px;
+}
+.sbtn{
+    margin-top: 20px;
+}
+.notify{
+    text-align: center;
+    color: #111;
+    font-size: 10px;
+    max-width: 500px;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.modal {
+    display: black;
+   /* Hidden by default */
+    position: fixed;
+   /* Stay in place */
+    z-index: 1;
+   /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100vw;
+   /* Full width */
+    height: 100vh;
+   /* Full height */
+    overflow: auto;
+   /* Enable scroll if needed */
+    background-color: rgb(0,0,0);
+   /* Fallback color */
+    background-color: rgba(0,0,0,0.4);
+   /* Black w/ opacity */
+    color: #000;
+}
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+   /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+   /* Could be more or less, depending on screen size */
+    max-width: 500px;
+    text-align: center;
+    border-radius: 20px;
+}
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+#music_btn{
+    right: 50%;
+}

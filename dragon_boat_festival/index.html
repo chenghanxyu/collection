@@ -1,506 +1,111 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-  <link rel="shortcut icon" href="https://smartcinematw.neocities.org/favicon.ico">
-  <meta name="robots" content="noindex">
-  <meta property="og:title" content="端午龍舟搶好康 | 行動電影院 Smart Cinema">
-  <meta property="og:description" content="立即點擊下方遊戲區域，開始你的龍舟競賽！">
-  <meta property="og:site_name" content="行動電影院 Smart Cinema">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://smartcinematw.neocities.org/dragon_boat_festival/">
-  <meta property="og:image" content="https://smartcinematw.neocities.org/images/gbf-og.jpg?v=1">
-	<title>端午龍舟搶好康 | 行動電影院 Smart Cinema</title>
-<style>
-html, body{
-  margin : 0px;
-  width : 100%;
-  height : 100%;
-/*   overflow: hidden; */
-  background-color: #eafddb;
-  font-family: "Helvetica", "Arial","LiHei Pro","黑體-繁","微軟正黑體","SimHei","Microsoft YaHei";
-}
-
-.logo{
-    height: 30px;
-    display:block;
-    margin:auto;
-    margin-top: 15px;
-}
-
-h1{
-    text-align: center;
-    color: #000;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.exp{
-    text-align: center;
-    color: #222;
-    margin-top: 22px;
-    margin-right: 5px;
-    margin-left: 5px;
-    margin-bottom: 0px;
-    font-weight: bold;
-}
-
-.hi-exp{
-    border:dotted 3px #89e68b;
-    color: #222;
-    text-align: center;
-    margin: auto;
-    margin-top: 0px;
-    /*margin-right: 5px;*/
-    /*margin-left: 5px;*/
-    padding: 8px;
-    max-width: 500px;
-}
-
-.howto{
-    text-align: center;
-    color: #222;
-    font-size: 0.8em;
-    margin-top: 0px;
-    margin-right: 5px;
-    margin-left: 5px;
-}
-
-#gamePos{
-  position: relative;
-  height: 100vh;
-  max-height: 100vw;
-}
-
-#music_btn{
-  position:absolute;
-  right:10px;
-}
-
-#gameCanvas{
-  position: absolute;
-  padding-bottom: 30px;
-  padding-top: 5px;
-}
-
-.sbtn{
-  margin-top: 20px;
-}
-
-.notify{
-    text-align: center;
-    color: #111;
-    font-size: 10px;
-    max-width: 500px;
-    margin: auto;
-    margin-bottom: 20px;
-    margin-top: 20px;
-}
-
-.modal {
-  display: black; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100vw; /* Full width */
-  height: 100vh; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  color: #000;
-}
-
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-  max-width: 500px;
-  text-align: center;
-  border-radius: 20px;
-}
-
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-#music_btn{
-  right: 50%;
-}
-
-</style>
-
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NXD3B6B');</script>
-<!-- End Google Tag Manager -->
-
-</head>
-<body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXD3B6B"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5ec789c650947c001806de93&product=inline-share-buttons" async="async"></script>
-<img src="https://smartcinematw.neocities.org/dragon_boat_festival/image/logo-black.png" class="logo">
-<h1>端午龍舟搶好康</h1>
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <br>
-    <h2>遊戲方式</h2>
-    <img src="https://smartcinematw.neocities.org/dragon_boat_festival/image/demo.gif" alt="ow to play." width="300" height="300">
-    <p>點擊遊戲區域（或按下鍵盤空白鍵）即可開始遊戲。<br>遊戲時只要點擊螢幕（或按下鍵盤空白鍵）即可控制龍舟往上划動。<br>記住，別讓龍舟撞到沿途凸出來的河岸！</p>
-    <h2>活動辦法</h2>
-    <p>只要截圖你的競賽成績，上傳至<a href="https://bit.ly/2X73ci0" target="_blank">活動貼文</a>留言處，就有機會獲得獨家電影兌換券！<br>再加碼抽出「致我的青春戀習曲」影展套票！
-</p>
-  </div>
-
-</div>
-    <p class="hi-exp">記得截圖你的競賽成績，上傳至<a href="https://bit.ly/3hL7LHc" target="_blank">活動貼文</a>留言處，就有機會獲得獨家電影兌換券！<br>再加碼抽出「致我的青春戀習曲」影展套票！
-</p>
-<div id="gamePos"><canvas id="gameCanvas"><canvas/></div>
-<a href="javascript:playPause();" id="music_btn"><img src="https://smartcinematw.neocities.org/dragon_boat_festival/image/speaker.png" width="16" height="16" id="music_btn2" border="0"></a>
-    <p class="exp">立即點擊上方遊戲區域，開始你的龍舟競賽！</p>
-<p class="howto">點擊遊戲區域（或按下鍵盤空白鍵）即可開始遊戲，遊戲過程中，只要點擊螢幕（或按下鍵盤空白鍵）即可控制龍舟往上划動，記住，別讓龍舟撞到沿途凸出來的河岸！</p>
-<div class="sharethis-inline-share-buttons sbtn"></div>
-<p class="notify">
-注意事項
-<br>■ 活動日期
-<br>即日起 ~ 2020/06/28
-<br>
-<br>■ 活動說明
-<br>完成遊戲並將截圖依指定格式回覆至 Facebook 粉絲專頁<a href="https://bit.ly/3hL7LHc" target="_blank">活動貼文</a>處，即可獲得獨家線上電影券及抽獎機會。
-<br>
-<br>■ 線上電影券使用方式
-<br>1. 進入電影兌換頁面後，點擊「兌換並打開 App 」按鈕進行兌換。
-<br>2. 系統將引導您進入 APP 中完成兌換。
-<br>3. 若無法成功跳轉頁面，您也可至行動電影院 App【我的】-【兌換碼】中輸入兌換碼進行兌換。
-<br>4. 兌換完畢，開始享受您的行動觀影時刻。
-<br>
-<br>■ 使用規範
-<br>1. 每張電影兌換券每支手機僅限兌換一次。
-<br>2. 本優惠不可更換其他商品或現金。
-<br>3. 行動電影院保有修改、變更或暫停本優惠之權利，如有未盡事宜，行動電影院可隨時補充公告之。
-<br>4. 電影兌換券請於期限內使用完畢，逾期或遺失數不補發或延展。
-<br>5. 電影均有下映日期，完成兌換後請於電影下映前完成觀看。
-<br>6. 行動電影院保有修改、暫停及終止活動之權利。
-</p>
-<audio autoplay = "autoplay" loop = "loop" preload = "auto" id="audios"
-             src = "https://ds.yuslife.cc/?/%E5%85%AC%E5%8F%B8/web/bgm.mp3" >
-</audio>
-
-<script>
-
-function playPause() {    
-    var music = document.getElementById('audios');    
-    var music_btn = document.getElementById('music_btn2');    
-    if (music.paused){    
-        music.play();    
-        music_btn.src = 'https://smartcinematw.neocities.org/dragon_boat_festival/image/speaker.png';    
-    }    
-    else{    
-        music.pause();    
-        music_btn.src = 'https://smartcinematw.neocities.org/dragon_boat_festival/image/mute.png';     
-    }    
-}   
-
-//--创建触摸监听，当浏览器打开页面时，触摸屏幕触发事件，进行音频播放
-    document.addEventListener('touchstart', function() {
-        document.getElementById('audios').play()
-    })
-
-    //whoa, just noticed this no longer works (30-10-2015), tap once and it's immediate game over. Hope to fix this soon. apologies to all you  flap masters :D
-
-//Entry for http://jams.gamejolt.io/lowrezjam2014/games
-//sprite sheet : http://sakri.net/stuff/canvas/FlappyBird32x32Tall.png
-
-var readyStateCheckInterval = setInterval( function() {
-    if (document.readyState === "complete") {
-        clearInterval(readyStateCheckInterval);
-        initGame();
-    }
-}, 10);
-
-var bgLoc = {x:0, y:0, width:32, height:32};
-var groundLoc = {x:0, y:31, width:35, height:1};
-var instructionsLoc = {x:6, y:49, width:17, height:21};
-var gameOverLoc = {x:6, y:32, width:21, height:17};
-var birdLocs = [{x:32, y:0, width:5, height:3}, {x:32, y:3, width:5, height:3}, {x:32, y:6, width:5, height:3}];
-var tubeLoc = {x:0, y:32, width:6, height:44};
-var hiscoreLoc = {x:6, y:70, width:30, height:10};
-var scoreLocs = [32, 9, 27, 32, 32, 32, 27, 41, 32, 41, 27, 50, 32, 50, 27, 59, 32, 59, 32, 18];
-
-var flappyBirdSource = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACUAAABQCAYAAACecbxxAAAEkUlEQVRogcVaPWgVQRDefQmWgmVEIoJYCSpqJQgaE2Nlk8rGSrGxy0+R2uIZsbGxDYKVjZUxomCRMl2qEBBFY2+pyMkeby+zc/O3e/d8Hxz39m/uu5nZ2dm954eHG5WbLPzqzHJNYOuxD1z8ANK59+hD7+w0me/2t6obn2/V13Bpzp3/tlAlpF6/nG8NWjjY7ESKkgmJ3jm36NfefAw/fbj2ZrdTTVHYPnvf9PAc8pDou/0tN1yaC8RqN1p8UTmVFAdsFgt5hnggU5su3L/fvV2RpCy+RZlFA0U8mC+YLZrw1Nv3fjo2/vpyEzwwHQjbIo6f+ST2Ce1BM5EI1R4RTBdMGMt+fWd3oiFh589qUn71fMpNs70zcfrYlPv6+2/2uGA+GKf2Zp3vVVMlxJ5cu9yqm7imAqrqSC/e+6OQEIR2QSDURUYgE9GQ6io0yqCQKzfRVKn6NeS+cLamSrSZ+8JJRLcMLDFzsaasKDWzNgbOwGxSfUwIjDDz4qWS4h7edUJoLyWSKtWKNgbLDaaLl0qqi/9IxCi5ZPAsEZ7z0By5qqOPQ1OU3E6zL4eYFXDmjZWUFes7u76qKg+7N6mLJb21tIf8PuTvXHtMkakUOyLZIUeB/xl15um9b3iom1EJOXs9rW8w4ciM9GbU+jC8ZZK2ZtZNreMcnRJQshe0jImbhhYpi2Yk03LjS8Y47OgTRnR4cTfj106umAkPDzfE/lQ7qqvW3Er9Q3V0vIJT5YAonOuH5VF1sZ4138LBpr90fa8KHeESEMvw7kZLBf6NxvkYi8BYD+NTrB8AEhQ3EygSSBMe3jUMRidoOAx4WKZUboF1DJbPLciJNE4DGnLG4Rw9WfssoDQgEYh+A/2HKkeY1j5MgiJA+Qs30yiZsC8bp+IUxwRimbhXVD0YR8qj6sSjIHxEw4UDh0ICfpg0MynU5iN86ej8URGGU1lcpl4UmxWbtCYVfanrQb4FGmkH45TLzHkiLMtILgY4JkXZOW9OlYXoTpIu3mJpywnxII8JUuZjt1icP2mmsJhLage5eYMmJFD+pMUUq+lwlqHBa524pUAClw1QsoCJmzbTOboUJKlyDiiiJkenzCKZSHtBKnia1j4wIMkO+4DmqxM/4KBQTIpLSaxjpZWgmJQWAKVxmvnMX7EoJ8d368ZAgzUk1M7eRyjgzAzrs773UWsfldxpMrQ6s0/1ZRoLevsyagVlclxXk3r681lL/yd+zPsHVy6oj8pN6CgiDrkBa76HVy8G704uR8xCOMWp/ugFWmkKhQHWEtxEcCcs4GyAa7coDRNufrc0hTeklt1MH2itfeP431QXJFusPlC6k2HNR+XpzGFGRbVzyw8FacIkccqSp8PTOidHdJaRNAPrk7zVmWWxA3wAEQJaxPtwfGtET1RhzEbZUxYFvhWnHPAtLf5YTo65snSKbP4MwkE7dbEkg9QOuSmVxivsuCUZBVyCEp8qjVclG1ZBhh9QX5Eg+jhL0PrjuumRLSl1N7OHOzaU0hAOXPYKMa59Xydzdso8pcMvTouSnMYCUl+hLYwbz3dC5/w/9v9b8FYpGIMAAAAASUVORK5CYII=";
-var spriteSheetImage = new Image();
-spriteSheetImage.src = flappyBirdSource;
-var spriteSheetCanvas = document.createElement("canvas");
-spriteSheetCanvas.width = spriteSheetImage.width;
-spriteSheetCanvas.height = spriteSheetImage.height;
-var spriteSheetContext = spriteSheetCanvas.getContext("2d");
-spriteSheetContext.drawImage(spriteSheetImage, 0, 0);
-
-var renderCanvas = document.createElement("canvas");
-renderCanvas.width = renderCanvas.height = 32;
-var renderContext = renderCanvas.getContext("2d");
-renderContext.globalCompositeOperation = "destination-over";
-var collisionCanvas = document.createElement("canvas");
-
-function drawSpriteSheetImage(context, locRect, x, y){
-    context.drawImage(spriteSheetImage, locRect.x, locRect.y, locRect.width, locRect.height, x, y, locRect.width, locRect.height);
-}
-
-var canvas, context, gameState, score, groundX = 0, birdY, birdYSpeed, birdX = 5, birdFrame = 0, activeTube, tubes = [], collisionContext, scale, scoreLoc = {width:5, height:9}, hiScore = 0;
-var HOME = 0, GAME = 1, GAME_OVER = 2, HI_SCORE = 3;
-
-function initGame(){
-    canvas = document.getElementById("gameCanvas");
-    context = canvas.getContext("2d");
-    scale = Math.floor(Math.min(window.innerHeight, window.innerWidth) / 32);
-    canvas.width = scale * 32;
-    canvas.height = scale * 32;
-    canvas.style.left = window.innerWidth / 2 - (scale * 32) / 2 + "px";
-    // canvas.style.top = window.innerHeight / 2 - (scale * 32) / 2 + "px";
-      canvas.style.top = 0 + "px";
-    window.addEventListener( "keydown", handleUserInteraction, false );
-    canvas.addEventListener('touchstart', handleUserInteraction, false);
-    canvas.addEventListener('mousedown', handleUserInteraction, false);
-    collisionCanvas.width = birdX + 8;
-    collisionCanvas.height = 32;
-    collisionContext = collisionCanvas.getContext("2d");
-    collisionContext.globalCompositeOperation = "xor";
-    startGame();
-    setInterval(loop, 60);
-}
-
-function startGame(){
-    gameState = HOME;
-    birdYSpeed = score = 0;
-    birdY = 14;
-    for(var i = 0; i < 2; i++){
-        tubes[i] = {x : Math.round(48 + i * 19) };
-        setTubeY(tubes[i]);
-    }
-}
-
-function loop(){
-    switch(gameState){
-        case HOME: renderHome();
-            break;
-        case GAME : renderGame();
-            break;
-        case GAME_OVER: renderGameOver();
-            break;
-        case HI_SCORE : renderHiScore();
-            break;
-    }
-}
-
-function handleUserInteraction(event){
-    switch(gameState){
-        case HOME: gameState = GAME;
-            break;
-        case GAME : birdYSpeed = -1.4;//"tap boost"
-            break;
-        case HI_SCORE: startGame();
-            break;
-    }
-    if(event){
-        event.preventDefault();//stop propagation chain
-    }
-}
-
-function renderHome(){
-    renderContext.clearRect(0,0,32,32);
-    drawSpriteSheetImage(renderContext, instructionsLoc, 32 - instructionsLoc.width - 1, 1);
-    updateBirdHome();
-    renderGround(true);
-    drawSpriteSheetImage(renderContext, bgLoc, 0, 0);
-    renderToScale();
-}
-
-function renderGame(){
-    renderContext.clearRect(0,0,32,32);
-    collisionContext.clearRect(0,0,collisionCanvas.width, collisionCanvas.height);
-    renderScore(score, renderScoreXGame, 1);
-    renderGround(true);
-    renderTubes();
-    updateBirdGame();
-    checkCollision();
-    drawSpriteSheetImage(renderContext, bgLoc, 0, 0);
-    renderToScale();
-}
-
-function renderGameOver(){
-    renderContext.clearRect(0, 0, 32, 32);
-    drawSpriteSheetImage(renderContext, gameOverLoc, 5, 7 - birdFrame);
-    renderGround();
-    drawSpriteSheetImage(renderContext, bgLoc, 0, 0);
-    renderToScale();
-    if(++score % 8 == 0){
-        birdFrame++;//this is a quick hack to move the game over logo
-        birdFrame %= 2;
-    }
-}
-
-function renderHiScore(){
-    renderContext.clearRect(0, 0, 32, 32);
-    drawSpriteSheetImage(renderContext, hiscoreLoc, 1, 5);
-    renderScore(hiScore, renderScoreXHiScore, 16);
-    renderGround();
-    drawSpriteSheetImage(renderContext, bgLoc, 0, 0);
-    renderToScale();
-}
-
-function renderToScale(){
-    var i, data = renderContext.getImageData(0,0,32, 32).data;
-    for(i=0; i<data.length; i+=4){
-        context.fillStyle = "rgb("+data[i]+","+data[i+1]+","+data[i+2]+")";
-        context.fillRect(((i/4) % 32) * scale, Math.floor(i / 128) * scale, scale, scale);
-    }
-}
-
-function checkCollision(){
-    if(birdX == tubes[activeTube].x + 6){
-        score++;
-    }
-    var collisionData = collisionContext.getImageData(birdX, birdY, 5, 3).data;
-    var data = renderContext.getImageData(birdX, birdY, 5, 3).data;
-    for(var i = 0; i< collisionData.length; i+=4){
-        if(collisionData[i+3] != data[i+3]){
-            gameState = GAME_OVER;
-            if(score > hiScore){
-                hiScore = score + 0;
-            }
-            setTimeout(function(){gameState = HI_SCORE}, 2500);
-            break;
-        }
-    }
-}
-
-function renderScore(score, xFunction, y){
-    var parts = score.toString().split("");
-    var i, index, length = parts.length;
-    for(var i=0; i<length; i++){
-        index = parseInt(parts.pop())*2;
-        scoreLoc.x = scoreLocs[index];
-        scoreLoc.y = scoreLocs[index + 1];
-        //drawSpriteSheetImage(renderContext, scoreLoc, 25 - 5 * i, 1);
-        drawSpriteSheetImage(renderContext, scoreLoc, xFunction(i, length), y);
-    }
-}
-
-function renderScoreXGame(index, total){
-    return 25 - 5 * index;
-}
-
-function renderScoreXHiScore(index, total){
-    return 12 + Math.floor((total/2)*5) - 5 * index;
-}
-
-function renderGround(move){
-    if(move && --groundX < bgLoc.width - groundLoc.width){
-        groundX = 0;
-    }
-    drawSpriteSheetImage(renderContext, groundLoc, groundX, 31);
-}
-
-function updateBirdHome(){
-    drawSpriteSheetImage(renderContext, birdLocs[birdFrame], birdX, birdY);
-    birdFrame++;
-    birdFrame %= 3;
-}
-
-function updateBirdGame(){
-    birdY = Math.round(birdY + birdYSpeed);
-    birdYSpeed += .25;//Gravity, change this to your likings
-    if(birdY < 0){
-        birdY = 0;
-        birdYSpeed = 0;
-    }
-    if(birdY + 3 > bgLoc.height){
-        birdY = 28;
-        birdYSpeed = 0;
-    }
-    renderContext.save();
-    collisionContext.save();
-    renderContext.translate(birdX, birdY);
-    collisionContext.translate(birdX, birdY);
-    drawSpriteSheetImage(renderContext, birdLocs[birdFrame], 0, 0);
-    drawSpriteSheetImage(collisionContext, birdLocs[birdFrame], 0, 0);
-    renderContext.restore();
-    collisionContext.restore();
-    birdFrame++;
-    birdFrame %= 3;
-}
-
-function renderTubes(){
-    var i, tube;
-    activeTube = tubes[0].x < tubes[1].x ? 0 : 1;
-    for(i= 0; i < 2;i++){
-        tube = tubes[i];
-        if(--tube.x <= -6 ){
-            tube.x = 32;
-            setTubeY(tube);
-        }
-        drawSpriteSheetImage(renderContext, tubeLoc, tube.x, tube.y );
-        drawSpriteSheetImage(collisionContext, tubeLoc, tube.x, tube.y );
-    }
-}
-
-function setTubeY(tube){
-    tube.y = Math.floor(Math.random() * (bgLoc.height - tubeLoc.height) );
-}
-
-// Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on the button, open the modal
-// btn.onclick = function() {
-//   modal.style.display = "block";
-// }
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-
-
-</script>
-</body>
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="/src/images/favicon.ico">
+    <meta name="robots" content="noindex">
+    <meta property="og:title" content="端午龍舟搶好康 | 於是寫下生活筆記">
+    <meta property="og:description" content="立即點擊下方遊戲區域，開始你的龍舟競賽！">
+    <meta property="og:site_name" content="於是寫下生活筆記">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://collection.yuslife.cc/dragon_boat_festival/">
+    <meta property="og:image" content="src/images/og.jpg">
+    <title>端午龍舟搶好康 | 於是寫下生活筆記</title>
+    <link rel="stylesheet" href="src/styles/style.css">
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+
+        })(window, document, 'script', 'dataLayer', 'GTM-NXD3B6B');</script>
+    <!-- End Google Tag Manager -->
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXD3B6B" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <script type="text/javascript"
+        src="https://platform-api.sharethis.com/js/sharethis.js#property=5ec789c650947c001806de93&product=inline-share-buttons"
+        async="async"></script>
+    <img src="src/images/logo.png" class="logo">
+    <h1>端午龍舟搶好康</h1>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <br>
+            <h2>遊戲方式</h2>
+            <img src="src/images/demo.gif" alt="ow to play." width="300" height="300">
+            <p>點擊遊戲區域（或按下鍵盤空白鍵）即可開始遊戲。
+                <br>遊戲時只要點擊螢幕（或按下鍵盤空白鍵）即可控制龍舟往上划動。
+                <br>記住，別讓龍舟撞到沿途凸出來的河岸！
+            </p>
+            <h2>活動辦法</h2>
+            <p>只要截圖你的競賽成績，上傳至<a href="https://bit.ly/2X73ci0"
+                    target="_blank">活動貼文</a>留言處，就有機會獲得獨家電影兌換券！<br>再加碼抽出「致我的青春戀習曲」影展套票！
+            </p>
+        </div>
+    </div>
+    <p class="hi-exp">記得截圖你的競賽成績，上傳至<a href="https://bit.ly/3hL7LHc"
+            target="_blank">活動貼文</a>留言處，就有機會獲得獨家電影兌換券！<br>再加碼抽出「致我的青春戀習曲」影展套票！
+    </p>
+    <div id="gamePos">
+        <canvas id="gameCanvas"></canvas>
+    </div>
+    <a href="javascript:playPause();" id="music_btn">
+        <img src="src/images/speaker.png" width="16" height="16" id="music_btn2">
+    </a>
+    <p class="exp">立即點擊上方遊戲區域，開始你的龍舟競賽！</p>
+    <p class="howto">點擊遊戲區域（或按下鍵盤空白鍵）即可開始遊戲，遊戲過程中，只要點擊螢幕（或按下鍵盤空白鍵）即可控制龍舟往上划動，記住，別讓龍舟撞到沿途凸出來的河岸！</p>
+    <div class="sharethis-inline-share-buttons sbtn"></div>
+    <p class="notify">
+        注意事項
+        <br>■ 活動日期
+        <br>即日起 ~ 2020/06/28
+        <br>
+        <br>■ 活動說明
+        <br>完成遊戲並將截圖依指定格式回覆至 Facebook 粉絲專頁<a href="https://bit.ly/3hL7LHc" target="_blank">活動貼文</a>處，即可獲得獨家線上電影券及抽獎機會。
+        <br>
+        <br>■ 線上電影券使用方式
+        <br>1. 進入電影兌換頁面後，點擊「兌換並打開 App 」按鈕進行兌換。
+        <br>2. 系統將引導您進入 APP 中完成兌換。
+        <br>3. 若無法成功跳轉頁面，您也可至行動電影院 App【我的】-【兌換碼】中輸入兌換碼進行兌換。
+        <br>4. 兌換完畢，開始享受您的行動觀影時刻。
+        <br>
+        <br>■ 使用規範
+        <br>1. 每張電影兌換券每支手機僅限兌換一次。
+        <br>2. 本優惠不可更換其他商品或現金。
+        <br>3. 行動電影院保有修改、變更或暫停本優惠之權利，如有未盡事宜，行動電影院可隨時補充公告之。
+        <br>4. 電影兌換券請於期限內使用完畢，逾期或遺失數不補發或延展。
+        <br>5. 電影均有下映日期，完成兌換後請於電影下映前完成觀看。
+        <br>6. 行動電影院保有修改、暫停及終止活動之權利。
+    </p>
+    <audio autoplay="autoplay" loop="loop" preload="auto" id="audios" src="src/audios/bgm.mp3">
+    </audio>
+    <script type="text/javascript" src="src/scripts/script.js"></script>
+    <script type="text/javascript" src="/src/scripts/watermark.js"></script>
+    <script>
+        // 自定義樣式
+        const setting = {
+            "text": "本頁面僅作為<br>作品及展示用", // 水印內容
+            "innerDate": false, // 在水印下方增加日期
+            "width": 110 // 水印寬度
+        };
+        // 渲染
+        watermark.build(setting);
+    </script>
+</body>
+
 </html>

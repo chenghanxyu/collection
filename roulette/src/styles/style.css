@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica", "Arial", "LiHei Pro", "黑體-繁", "微軟正黑體", "SimHei", "Microsoft YaHei";
+}
+
+#lottery-wrap {
+    position: relative;
+    display: block;
+    margin: 20px auto;
+    width: 300px;
+    border: 8px solid #eac34c;
+    border-radius: 50%;
+    box-shadow: 3px 0 3px #fffdc9, 0px 3px 3px #fffdc9, -3px 0 3px #fffdc9, 0px -3px 3px #fffdc9;
+}
+
+canvas {
+    display: block;
+}
+
+#lottery-handler {
+    position: absolute;
+    z-index: 2;
+    width: 60px;
+    height: 74px;
+    left: 50%;
+    top: 50%;
+    margin: -44px 0 0 -30px;
+    background: url(../images/handler.png) no-repeat 50%;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.logo {
+    height: 30px;
+    display: block;
+    margin: auto;
+    margin-top: 15px;
+}
+
+h1 {
+    text-align: center;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.exp {
+    text-align: center;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.info {
+    border: solid 5px #eac34c;
+    width: 300px;
+    text-align: center;
+    border-radius: 5px;
+    position: relative;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #FFFDC9;
+    box-shadow: 0px 0px 5px 2px #fff;
+}
+
+h3 {
+    text-align: center;
+    color: #EF710E;
+    font-size: 1.3em;
+}
+
+ul {
+    text-align: center;
+    color: #000;
+    margin-top: 5px;
+    list-style-type: none;
+}
+
+li.jackpot {
+    font-size: 1.1em;
+    font-weight: 700;
+}
+
+.notify {
+    text-align: center;
+    color: #ddd;
+    font-size: 10px;
+    width: 300px;
+    margin: auto;
+    margin-bottom: 20px;
+}

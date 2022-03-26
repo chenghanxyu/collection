@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "微軟雅黑",Arial,sans-serif;
+    background-color: #EC5E5D;
+}
+.logo{
+    height: 30px;
+    display:block;
+    margin:auto;
+    margin-top: 15px;
+}
+h1{
+    text-align: center;
+    color: #fff;
+    margin-top: 10px;
+}
+.exp{
+    text-align: center;
+    color: #fff;
+    margin-top: 10px;
+}
+.prize {
+    width: 325px;
+    height: 325px;
+    margin: 20px auto 0 auto;
+    position: relative;
+    background: lightgoldenrodyellow;
+    border: solid 6px #eac34c;
+    box-shadow:0px 0px 5px 2px #fff;
+}
+.prize i {
+    display: block;
+    width: 80px;
+    height: 80px;
+    border: 1px solid #eac34c;
+    font-size: 0.8em;
+    position: absolute;
+    text-align: center;
+    line-height: 80px;
+    background: #FFFDC9;
+    font-style: normal;
+    color: #EF710E;
+    font-weight: 700;
+}
+.btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: none;
+    margin-left: -40px;
+    margin-top: -40px;
+    background: #eac34c;
+    outline: none;
+    font-family: "微軟雅黑",Arial,sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+}
+.prize i.active {
+    background: #eac34c;
+    color: #fff;
+}
+.prize i:nth-child(1) {
+    left: 0;
+}
+.prize i:nth-child(2) {
+    left: 81px;
+}
+.prize i:nth-child(3) {
+    left: 162px;
+}
+.prize i:nth-child(4) {
+    left: 243px;
+}
+.prize i:nth-child(5) {
+    right: 0;
+    top: 81px;
+}
+.prize i:nth-child(6) {
+    right: 0;
+    top: 162px;
+}
+.prize i:nth-child(7) {
+    right: 0;
+    top: 243px;
+}
+.prize i:nth-child(8) {
+    left: 162px;
+    bottom: 0;
+}
+.prize i:nth-child(9) {
+    left: 81px;
+    bottom: 0;
+}
+.prize i:nth-child(10) {
+    left: 0;
+    bottom: 0;
+}
+.prize i:nth-child(11) {
+    left: 0;
+    top: 162px;
+}
+.prize i:nth-child(12) {
+    left: 0;
+    top: 81px;
+}
+.info{
+    border:solid 5px #eac34c;
+    width: 300px;
+    text-align: center;
+    border-radius: 5px;
+    position: relative;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #FFFDC9;
+    box-shadow:0px 0px 5px 2px #fff;
+}
+h3{
+    text-align: center;
+    color: #EF710E;
+}
+ul{
+    text-align: center;
+    color: #000;
+    margin-top: 5px;
+    list-style-type: none;
+}
+li.jackpot{
+    font-size: 1.1em;
+    font-weight: 700;
+    margin-top: 5px;
+}
+.notify{
+    text-align: center;
+    color: #ddd;
+    font-size: 10px;
+    width: 300px;
+    margin: auto;
+    margin-bottom: 20px;
+}
